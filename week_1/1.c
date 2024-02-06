@@ -1,20 +1,33 @@
 #include <stdio.h>
-int main() {
-	int arr[9];
-	for(int i = 0; i < 9; i++){
-		scanf("%d", &arr[i]);
-		int temp = arr[i];
-		int count = 1;
-		int num = 0;
-		while(temp != 0){
-			int temp1 = temp % 10;
-			num = num + (temp1*count*10); 
-			count++;
-			temp = temp / 10;
-		}
-		arr[i] = num;
+
+void swap(int* a,int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main()
+{
+    int my_arr[9];
+    printf("Enter 9 numbers\n");
+    int i = 0;
+	for(i=0;i<9;i++)
+    {
+        scanf("%d",&my_arr[i]);
+    }
+    printf("Reversing digits...\n");
+    for(i=0;i<9;i++)
+    {
+        int value = my_arr[i];
+	int rev = 0;
+        while(value>0)
+	{
+	    int digit = value%10;
+	    value /= 10;
+	    rev = 10*rev+digit;
 	}
-	for(int i = 0; i < 9; i++){
-		printf("%d ", arr[i]);
-	}
+        my_arr[i] = rev;
+	printf("%d ",my_arr[i]);
+    }
 }
